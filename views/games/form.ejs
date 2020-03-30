@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Game</title>
 </head>
+
 <body>
 
     <a href="/games">Back to games</a>
 
-    <h1>Create game</h1>
+    <h1><%= title %> </h1>
 
-    <form action="" method="post">
+    <form action="/games/<%= action %> " method="post">
         <div>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
+            <% if (locals.game) { %>
+                <input type="hidden" id="id" name="id" value="<%= game.id %>">
+                <input type="text" id="name" name="name" value="<%= game.name %>">
+            <% } else {%>
+                <input type="text" id="name" name="name">
+            <% } %> 
         </div>
-
-
         <%  if (locals.errorMessage){ %>
-            <p style="color: red"> <%= errorMessage %> </p> 
+        <p style="color: red"> <%= errorMessage %> </p>
         <% }  %>
-         
+
         <button>Save</button>
     </form>
 </body>
+
 </html>

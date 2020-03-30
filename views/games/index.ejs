@@ -11,7 +11,7 @@
     <ul>
         <% games.forEach((game) => { %>
         <li>
-            <%= game.name %>
+            <a href="/games/update/<%= game.id %>"><%= game.name %></a>
             <button type="button" onclick="deleteGame(<%= game.id %>)">Borrar</button>
         </li>
         <% }); %>
